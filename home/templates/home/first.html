@@ -1,0 +1,23 @@
+{% extends 'accounts\master.html' %}
+<html>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'home.css' %}"/>
+</head>
+{% block content %}
+<div>
+
+    <h1>Welcome</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <br><br>
+        <input type="submit" value="Post"/>
+    </form><br>
+    {% for post in posts %}
+        <h1>{{ post.post }}</h1>
+        <p>Posted by {{ post.user.get_full_name }} on {{ post.date }}</p>
+    {% endfor %}
+    </div>
+{% endblock %}
+</html>
